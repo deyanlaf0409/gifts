@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Do You Love Me?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;  
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 60px;
+            justify-content: center; /* Center the buttons horizontally */
+        }
+
+        .btn {
+            position: relative;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #bottomText {
+
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background-color: #ffffff; /* Background color of the text box */
+            padding: 10px;
+        }
+        .yes-btn, .no-btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 25px; /* Adds rounded corners */
+            outline: none;
+            transition: all 0.1s ease; /* Smooth transition for all properties over 0.3 seconds */
+        }
+
+        .yes-btn {
+            background: linear-gradient(45deg, #ff6b81, #ff9770); /* Gradient from pink to orange */
+            color: white;
+            box-shadow: 0 4px 6px rgba(255, 107, 129, 0.2); /* Shadow effect */
+        }
+
+        .no-btn {
+            background: linear-gradient(45deg, #ff3f4e, #ff6348); /* Gradient from red to orange-red */
+            color: white;
+            box-shadow: 0 4px 6px rgba(255, 63, 78, 0.2); /* Shadow effect */
+        }
+
+        .yes-btn:hover, .no-btn:hover {
+            transform: scale(1.05); /* Enlarge the button slightly on hover */
+            box-shadow: 0 8px 12px rgba(255, 107, 129, 0.4); /* Increase shadow on hover */
+        }
+
+        /* Hover styles for both buttons */
+        .yes-btn:hover, .no-btn:hover {
+            opacity: 0.3; /* Reduce opacity on hover for a subtle effect */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="bottomText">from Deyan to Nikoli</div>
+    <div class="container">
+        <div class="question">Do you love me?</div>
+        <div class="buttons">
+            <button class="btn no-btn" id="noBtn">No</button>
+            <button class="btn yes-btn" id="yesBtn">Yes</button>
+        </div>
+        <div id="responseContainer"></div>
+    </div>
+
+    <script>
+        // JavaScript logic to be added here
+        const button = document.getElementById('noBtn');
+const yesBtn = document.getElementById('yesBtn');
+const responseContainer = document.getElementById('responseContainer');
+
+const alertMessages = [
+    'Really ??',
+    'You love ... me ??',
+    'You really love me :D !!'
+];
+
+function showAlerts(index) {
+    if (index < alertMessages.length) {
+        alert(alertMessages[index]);
+        setTimeout(function () {
+            showAlerts(index + 1);
+        }, 100); // Delay between alerts in milliseconds (1 second in this example)
+    } else {
+        // Display text and heart image after the second alert
+        const textElement = document.createElement('div');
+        textElement.textContent = 'I love you even more !';
+
+        //dirs
+        //something/dont/ruin/your/surprise/please/no/love-hug.gif
+        //something/dont/ruin/your/surprise/please/no/love.png
+
+        const gifImage = document.createElement('img');
+        gifImage.src = 'something/dont/ruin/your/surprise/please/no/love-hug.gif'; // Replace 'love-hug.gif' with the path to your GIF file
+        gifImage.style.width = '100px'; // Set the desired width
+        gifImage.style.height = '100px'; // Set the desired height
+
+        const heartImage1 = document.createElement('img');
+        heartImage1.src = 'something/dont/ruin/your/surprise/please/no/love.png'; // Replace 'love.png' with the path to your heart image
+        heartImage1.style.width = '50px'; // Set the desired width
+        heartImage1.style.height = '50px'; // Set the desired height
+
+        const heartImage2 = document.createElement('img');
+        heartImage2.src = 'something/dont/ruin/your/surprise/please/no/love.png'; // Replace 'love.png' with the path to your heart image
+        heartImage2.style.width = '50px'; // Set the desired width
+        heartImage2.style.height = '50px'; // Set the desired height
+
+        // Append text, heart image, GIF, and another heart image to the response container
+        responseContainer.appendChild(textElement);
+        responseContainer.appendChild(heartImage1);
+        responseContainer.appendChild(gifImage);
+        responseContainer.appendChild(heartImage2);
+    }
+}
+
+button.addEventListener('mouseover', function () {
+    button.style.left = `${Math.ceil(Math.random() * 195) + 130}px`;
+    button.style.top = `${Math.ceil(Math.random() * 195) + 130}px`;
+});
+
+button.addEventListener('click', function () {
+    alert(':(');
+});
+
+yesBtn.addEventListener('click', function () {
+    // Show alerts
+    showAlerts(0);
+});
+
+    </script>
+</body>
+</html>
